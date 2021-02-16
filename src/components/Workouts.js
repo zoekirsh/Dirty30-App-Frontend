@@ -1,7 +1,7 @@
 import React from 'react';
 import WorkoutGrid from '../components/WorkoutGrid'
 
-class Browse extends React.Component {
+class Workouts extends React.Component {
    state = {
       currentUser: {
          id: 1,
@@ -59,4 +59,4 @@ class Browse extends React.Component {
    }
 }
 
-export default Browse
+export default Workouts
