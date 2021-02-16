@@ -5,14 +5,17 @@ import {
   Route
 } from 'react-router-dom';
 import App from './App';
-import NavBar from '../components/NavBar';
-import Login from '../components/Login';
-import Home from '../components/Home';
+import NavBar from './components/NavBar';
+import Login from './components/Login';
+import Home from './components/Home';
+import Workouts from './components/Workouts';
+import CreateWorkout from './components/CreateWorkout';
+import Workout from './components/Workout';
 import './index.css';
 
 //import reportWebVitals from './reportWebVitals';        
 
-ReactDOM.render((
+ReactDOM.render(
   <Router>
     <div>
       <NavBar />
@@ -22,8 +25,7 @@ ReactDOM.render((
       <Route exact path="/workouts/new" component={CreateWorkout}/>
       <Route exact path="/workout" component={Workout}/>
     </div>
-  </Router>),
-  <App />
+  </Router>,
   document.getElementById('root')
 );
 
