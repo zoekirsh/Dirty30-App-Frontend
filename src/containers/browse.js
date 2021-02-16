@@ -14,10 +14,9 @@ class Browse extends React.Component {
       })
    }
 
-
    render() {
       return(
-         <div>
+         <div className="browseContainer">
             <WorkoutGrid workouts={this.state.userWorkouts} />
             <hr/>
             <WorkoutGrid workouts={this.state.allWorkouts} />

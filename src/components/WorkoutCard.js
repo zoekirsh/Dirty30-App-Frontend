@@ -1,17 +1,7 @@
 import React from 'react'
 
-// function WorkoutCard() {
-//    return <h3>hello</h3>
-// }
-
-class WorkoutCard extends React.Component {
-   
-   render() {
-      {console.log("hit")}
-      return(
-         <h1>hello</h1>
-      )
-   }
+const WorkoutCard = (props) => {
+   return <h4>{props.workoutInfo.name}</h4>
 }
 
 export default WorkoutCard

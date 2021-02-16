@@ -4,17 +4,18 @@ import WorkoutCard from '../components/WorkoutCard'
 class WorkoutGrid extends React.Component {
 
    renderGrid = (workoutArr) => {
-      workoutArr.map( workout => {
-         <div>
-            {console.log(workout)}
-            <WorkoutCard />
-         </div>
+      return workoutArr.map( workout => {
+         return (
+            <div className="gridItem">
+               <WorkoutCard workoutInfo={workout}/>
+            </div>
+         )
       })
    }
 
    render() {
       return(
-         <div>
+         <div className="grid">
             { this.renderGrid(this.props.workouts) }
          </div>
       )
