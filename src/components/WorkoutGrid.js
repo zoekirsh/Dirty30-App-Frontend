@@ -1,5 +1,5 @@
 import React from 'react'
-import WorkoutCard from '../components/WorkoutCard'
+import WorkoutCard from './WorkoutCard'
 
 // import { Link } from 'react-router-dom'
 

@@ -1,17 +1,5 @@
 import React from 'react';
 import './App.css';
-<<<<<<< HEAD
-import Browse from './containers/browse'
-
-function App() {
-
-
-  return (
-    <div className="App">
-      <Browse />
-    </div>
-  );
-=======
 import {
   Route, withRouter, Switch
 } from 'react-router-dom';
@@ -68,7 +56,6 @@ class App extends React.Component {
       </div>
     )  
   }
->>>>>>> a93ad9e80b30d33f4e0ed65e03a998a5327b3413
 }
 
 export default withRouter(App);
