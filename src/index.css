@@ -13,6 +13,7 @@ code {
 }
 
 .grid {
+  justify-content: center;
   display: grid;
   grid-template-columns: 13rem 13rem 13rem 13rem;
 }

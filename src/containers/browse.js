@@ -3,14 +3,45 @@ import WorkoutGrid from './WorkoutGrid'
 
 class Browse extends React.Component {
    state = {
+      currentUser: {
+         id: 1,
+         username: "RileyMIverson",
+         password: "benchpress4ever",
+         firstname: "Riley",
+         height: 75,
+         weight: 200,
+         workouts: [
+         {
+         id: 1,
+         name: "Burn baby",
+         muscleGroup: "upper body",
+         sets: 3,
+         exercisesPerSet: 7
+         },
+         {
+         id: 2,
+         name: "Bunz of steel",
+         muscleGroup: "lower body",
+         sets: 3,
+         exercisesPerSet: 7
+         }
+         ]
+      },
       userWorkouts: [],
       allWorkouts: []
    }
 
    componentDidMount() {
+      fetch('http://localhost:3000/workouts')
+      .then(resp => resp.json())
+      .then(data => {
+         this.setState({
+            allWorkouts: data
+         })
+      })
+
       this.setState({
-         userWorkouts: this.props.data.currentUser.userWorkouts,
-         allWorkouts: this.props.data.allWorkouts
+         userWorkouts: this.state.currentUser.workouts
       })
    }
 

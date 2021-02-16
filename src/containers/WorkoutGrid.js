@@ -1,14 +1,22 @@
 import React from 'react'
-import WorkoutCard from '../components/WorkoutCard' 
+import WorkoutCard from '../components/WorkoutCard'
+
+// import { Link } from 'react-router-dom'
 
 class WorkoutGrid extends React.Component {
+
+   handleClick = (id) => {
+      return console.log(id)
+   }
 
    renderGrid = (workoutArr) => {
       return workoutArr.map( workout => {
          return (
-            <div className="gridItem">
-               <WorkoutCard workoutInfo={workout}/>
-            </div>
+            // <Link >
+               <div onClick={() => this.handleClick(workout.id)} className="gridItem">
+                  <WorkoutCard key={workout.id} workoutInfo={workout}/>
+               </div>
+            // </Link>
          )
       })
    }
