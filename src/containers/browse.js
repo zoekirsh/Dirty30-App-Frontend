@@ -28,7 +28,8 @@ class Browse extends React.Component {
          ]
       },
       userWorkouts: [],
-      allWorkouts: []
+      allWorkouts: [],
+      filter: "all"
    }
 
    componentDidMount() {
@@ -44,6 +45,8 @@ class Browse extends React.Component {
          userWorkouts: this.state.currentUser.workouts
       })
    }
+
+   
 
    render() {
       return(
