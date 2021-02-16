@@ -1,20 +1,16 @@
 import React from 'react';
+import LoginForm from './LoginForm'
 
 class Login extends React.Component {
   render() {
+    console.log(this.props)
     return (
-      <form>
-        <h1>Login</h1>
+      <div>
+        <LoginForm history={this.props.history} title={this.props.title} userdata={this.props.userdata} handleSubmit={this.props.handleSubmit}/>
         <div>
-          <input type="text" name="username" placeholder="Username" />
-          <label htmlFor="username">Username</label>
+          <button onClick={() => this.props.history.push("/signup")}>New User</button>
         </div>
-        <div>
-          <input type="password" name="password" placeholder="Password" />
-          <label htmlFor="password">Password</label>
-        </div>
-        <input type="submit" value="Login" />
-      </form>
+      </div>
     );
   }
 }

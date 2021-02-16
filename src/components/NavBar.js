@@ -15,7 +15,7 @@ const NavBar = () => {
   return (
     <div className="navbar">
       <NavLink 
-        to="/"
+        to="/home"
         exact
         style={link}
         activeStyle={{
