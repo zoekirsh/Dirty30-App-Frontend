@@ -3,7 +3,6 @@ import WorkoutGrid from '../components/WorkoutGrid'
 
 class Workouts extends React.Component {
    state = {
-      currentUser: {},
       userWorkouts: [],
       allWorkouts: [],
       filteredWorkouts: [],
@@ -24,10 +23,10 @@ class Workouts extends React.Component {
    componentDidMount() {
       this.setAllWorkouts()
 
-      if (Object.keys(this.state.currentUser).length > 0) {
+      if (Object.keys(this.props.currentUser).length > 0) {
          this.setState({
-            userWorkouts: this.state.currentUser.workouts,
-            userFilteredWorkouts: this.state.currentUser.workouts
+            userWorkouts: this.props.currentUser.workouts,
+            userFilteredWorkouts: this.props.currentUser.workouts
          })
       }
    }

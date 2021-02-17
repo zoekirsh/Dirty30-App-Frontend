@@ -49,7 +49,7 @@ class App extends React.Component {
         <Route exact path="/" render={(rProps) => <Login {...rProps} title={"Login"} userdata={this.state.user} handleSubmit={this.handleLogin}/>}/>
         <Route exact path="/signup" render={(rProps) => <LoginForm {...rProps} title={"New User"} handleSubmit={this.handleSignup}/>}/>
         <Route exact path="/home" component={Home}/>
-        <Route exact path="/browse" component={Workouts}/>
+        <Route exact path="/browse" render={() => <Workouts currentUser={this.state.user} />} />
         <Route exact path="/workouts/new" component={CreateWorkout}/>
         <Route exact path="/workout" component={Workout}/>
       </div>
