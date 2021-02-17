@@ -1,0 +1,37 @@
+{
+   "currentUser": {
+      "username": "Riley",
+      "userWorkouts": [
+         {
+            "id": 1,
+            "name": "userWorkout1"
+         },
+         {
+            "id": 2,
+            "name": "userWorkout2"
+         },
+         {
+            "id": 3,
+            "name": "userWorkout3"
+         }
+      ]
+   },
+   "allWorkouts": [
+      {
+         "id": 1,
+         "name": "Workout1"
+      },
+      {
+         "id": 2,
+         "name": "Workout2"
+      },
+      {
+         "id": 3,
+         "name": "Workout3"
+      },
+      {
+         "id": 4,
+         "name": "Workout4"
+      }
+   ]
+ }

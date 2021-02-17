@@ -13,7 +13,6 @@ import Workout from './components/Workout';
 const URL = 'http://localhost:3000'
 
 class App extends React.Component {
-
   state = {
     user: {},
     error: false,
