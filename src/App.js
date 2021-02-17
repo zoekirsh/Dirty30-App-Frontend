@@ -111,8 +111,6 @@ class App extends React.Component {
     this.setState({ user: {} })
   }
 
-  renderHomePage = () => <Home user={this.state.user}/>
-
   render() {
     const { user, error } = this.state
     return (
@@ -120,11 +118,11 @@ class App extends React.Component {
         <NavBar user={user} handleLogout={this.handleLogout}/>
 
         <Switch>
-          <Route exact path="/" render={(rProps) => <Login {...rProps} title={"Login"} handleLoginOrSignup={this.handleLogin} /> } />
+          <Route exact path="/" render={(rProps) => <Login {...rProps} title={"Login"} handleLoginOrSignup={this.handleLogin}/> } />
           <Route exact path="/signup" render={(rProps) => <LoginForm {...rProps} title={"New User"} handleLoginOrSignup={this.handleSignup}/> } />
 
           {!user.id && <Redirect to="/" />}
-          <Route exact path="/home" render={this.renderHomePage} />
+          <Route exact path="/home" render={(rProps) => <Home {...rProps} user={this.state.user}/>} />
           <Route exact path="/browse" component={Workouts}/>
           <Route exact path="/workouts/new" component={CreateWorkout}/>
           <Route exact path="/workout" component={Workout}/>
