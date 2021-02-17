@@ -7,8 +7,7 @@ class Workouts extends React.Component {
       userWorkouts: [],
       allWorkouts: [],
       filteredWorkouts: [],
-      userFilteredWorkouts: [],
-      filter: "all"
+      userFilteredWorkouts: []
    }
 
    setAllWorkouts = () => {
