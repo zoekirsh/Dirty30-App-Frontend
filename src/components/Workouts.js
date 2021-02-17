@@ -3,33 +3,10 @@ import WorkoutGrid from '../components/WorkoutGrid'
 
 class Workouts extends React.Component {
    state = {
-      currentUser: {
-         id: 1,
-         username: "RileyMIverson",
-         password: "benchpress4ever",
-         firstname: "Riley",
-         height: 75,
-         weight: 200,
-         workouts: [
-         {
-         id: 1,
-         name: "Burn baby",
-         muscleGroup: "upper body",
-         sets: 3,
-         exercisesPerSet: 7
-         },
-         {
-         id: 2,
-         name: "Bunz of steel",
-         muscleGroup: "lower body",
-         sets: 3,
-         exercisesPerSet: 7
-         }
-         ]
-      },
       userWorkouts: [],
       allWorkouts: [],
-      filter: "all"
+      filteredWorkouts: [],
+      userFilteredWorkouts: []
    }
 
    setAllWorkouts = () => {
@@ -37,7 +14,8 @@ class Workouts extends React.Component {
       .then(resp => resp.json())
       .then(data => {
          this.setState({
-            allWorkouts: data
+            allWorkouts: data,
+            filteredWorkouts: data
          })
       })     
    }
@@ -45,31 +23,58 @@ class Workouts extends React.Component {
    componentDidMount() {
       this.setAllWorkouts()
 
-      this.setState({
-         userWorkouts: this.state.currentUser.workouts
-      })
+      if (Object.keys(this.props.currentUser).length > 0) {
+         this.setState({
+            userWorkouts: this.props.currentUser.workouts,
+            userFilteredWorkouts: this.props.currentUser.workouts
+         })
+      }
    }
 
    handleFilter = (e) => {
-    let currentWorkouts = this.state.allWorkouts
-    switch(e.target.value){
-      case 'upper-body':
-        let filteredUpper = currentWorkouts.filter(workout => workout.muscleGroup === "upper body")
-        this.setState({allWorkouts: filteredUpper})
-        break
-      case 'lower-body':
-        let filteredLower = currentWorkouts.filter(workout => workout.muscleGroup === "lower body")
-        this.setState({allWorkouts: filteredLower})
-        break
-      case 'full-body':
-        let filteredFull = currentWorkouts.filter(workout => workout.muscleGroup === "full body")
-        this.setState({allWorkouts: filteredFull})
-        break
-      default:
-        this.setState({allWorkouts: currentWorkouts})
-        break
-        
-    }
+      const currentWorkouts = this.state.allWorkouts
+      const currentUserWorkouts = this.state.userWorkouts
+
+      switch(e.target.value){
+         case 'upper-body':
+            let filteredUpper = currentWorkouts.filter(workout => workout.muscleGroup === "upper body")
+            let filteredUserUpper = currentUserWorkouts.filter(workout => workout.muscleGroup === "upper body")
+
+            this.setState({
+               filteredWorkouts: filteredUpper,
+               userFilteredWorkouts: filteredUserUpper
+            })
+            break
+         case 'lower-body':
+            let filteredLower = currentWorkouts.filter(workout => workout.muscleGroup === "lower body")
+            let filteredUserLower = currentUserWorkouts.filter(workout => workout.muscleGroup === "lower body")
+
+            this.setState({
+               filteredWorkouts: filteredLower,
+               userFilteredWorkouts: filteredUserLower
+            })
+            break
+         case 'full-body':
+            let filteredFull = currentWorkouts.filter(workout => workout.muscleGroup === "full body")
+            let filteredUserFull = currentUserWorkouts.filter(workout => workout.muscleGroup === "full body")
+
+            this.setState({
+               filteredWorkouts: filteredFull,
+               userFilteredWorkouts: filteredUserFull
+            })
+            break
+         default:
+            this.setState({
+               filteredWorkouts: currentWorkouts,
+               userFilteredWorkouts: currentUserWorkouts
+            })
+            break
+         
+      }
+   }
+
+   renderWorkouts = (workoutArr) => {
+      return <WorkoutGrid workouts={workoutArr} />
    }
 
 
@@ -82,9 +87,9 @@ class Workouts extends React.Component {
               <option value="lower-body">Lower Body</option>
               <option value="full-body">Full Body</option>
             </select>
-            <WorkoutGrid workouts={this.state.userWorkouts} />
+            {this.renderWorkouts(this.state.userFilteredWorkouts)}
             <hr/>
-            <WorkoutGrid workouts={this.state.allWorkouts} />
+            {this.renderWorkouts(this.state.filteredWorkouts)}
          </div>
       )
    }

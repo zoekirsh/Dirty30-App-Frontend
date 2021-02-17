@@ -122,7 +122,7 @@ class App extends React.Component {
 
           {!user.id && <Redirect to="/" />}
           <Route exact path="/home" render={(rProps) => <Home {...rProps} user={this.state.user}/>} />
-          <Route exact path="/browse" component={Workouts}/>
+          <Route exact path="/browse" render={() => <Workouts currentUser={this.state.user} />} />
           <Route exact path="/workouts/new" component={CreateWorkout}/>
           <Route exact path="/workout" component={Workout}/>
         </Switch>
