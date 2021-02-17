@@ -42,6 +42,11 @@ const NavBar = () => {
         activeStyle={{
           textShadow: 'white'
         }}>sweat</NavLink>
+      <NavLink
+        to="/logout"
+        exact
+        id="logout"
+        >logout</NavLink>
     </div>
   )
 }
