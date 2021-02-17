@@ -12,7 +12,6 @@ import CreateWorkout from './components/CreateWorkout';
 import Workout from './components/Workout';
 
 class App extends React.Component {
-
   state = {
     user: {},
     workouts: [],
