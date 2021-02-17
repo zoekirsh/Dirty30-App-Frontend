@@ -29,6 +29,7 @@ class Workouts extends React.Component {
       },
       userWorkouts: [],
       allWorkouts: [],
+      filteredWorkouts: [],
       filter: "all"
    }
 
@@ -37,7 +38,8 @@ class Workouts extends React.Component {
       .then(resp => resp.json())
       .then(data => {
          this.setState({
-            allWorkouts: data
+            allWorkouts: data,
+            filteredWorkouts: data
          })
       })     
    }
@@ -51,22 +53,22 @@ class Workouts extends React.Component {
    }
 
    handleFilter = (e) => {
-    let currentWorkouts = this.state.allWorkouts
+    const currentWorkouts = this.state.allWorkouts
     switch(e.target.value){
       case 'upper-body':
         let filteredUpper = currentWorkouts.filter(workout => workout.muscleGroup === "upper body")
-        this.setState({allWorkouts: filteredUpper})
+        this.setState({filteredWorkouts: filteredUpper})
         break
       case 'lower-body':
         let filteredLower = currentWorkouts.filter(workout => workout.muscleGroup === "lower body")
-        this.setState({allWorkouts: filteredLower})
+        this.setState({filteredWorkouts: filteredLower})
         break
       case 'full-body':
         let filteredFull = currentWorkouts.filter(workout => workout.muscleGroup === "full body")
-        this.setState({allWorkouts: filteredFull})
+        this.setState({filteredWorkouts: filteredFull})
         break
       default:
-        this.setState({allWorkouts: currentWorkouts})
+        this.setState({filteredWorkouts: currentWorkouts})
         break
         
     }
@@ -82,9 +84,9 @@ class Workouts extends React.Component {
               <option value="lower-body">Lower Body</option>
               <option value="full-body">Full Body</option>
             </select>
-            <WorkoutGrid workouts={this.state.userWorkouts} />
+            <WorkoutGrid workouts={this.state.filteredWorkouts} />
             <hr/>
-            <WorkoutGrid workouts={this.state.allWorkouts} />
+            <WorkoutGrid workouts={this.state.filteredWorkouts} />
          </div>
       )
    }
