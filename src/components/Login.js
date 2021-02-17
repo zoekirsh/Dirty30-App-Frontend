@@ -6,10 +6,7 @@ class Login extends React.Component {
     console.log(this.props)
     return (
       <div>
-        <LoginForm history={this.props.history} title={this.props.title} userdata={this.props.userdata} handleSubmit={this.props.handleSubmit}/>
-        <div>
-          <button onClick={() => this.props.history.push("/signup")}>New User</button>
-        </div>
+        <LoginForm history={this.props.history} title={this.props.title} handleLoginOrSignup={this.props.handleLoginOrSignup}/>
       </div>
     );
   }
