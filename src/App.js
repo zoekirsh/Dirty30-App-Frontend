@@ -15,7 +15,13 @@ class App extends React.Component {
   state = {
     user: {},
     workouts: [],
-    selectedWorkout: {}
+    selectedWorkout: {
+      id: 1,
+      name: "Burn baby",
+      muscleGroup: "upper body",
+      sets: 3,
+      exercisesPerSet: 7
+    }
   }
 
   handleLogin = ({ username, password }) => {
@@ -51,7 +57,7 @@ class App extends React.Component {
         <Route exact path="/home" component={Home}/>
         <Route exact path="/browse" render={() => <Workouts currentUser={this.state.user} />} />
         <Route exact path="/workouts/new" component={CreateWorkout}/>
-        <Route exact path="/workout" component={Workout}/>
+        <Route exact path="/workout" render={() => <Workout currentWorkout={this.state.selectedWorkout}/>}/>
       </div>
     )  
   }
