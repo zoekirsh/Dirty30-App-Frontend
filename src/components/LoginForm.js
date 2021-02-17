@@ -7,40 +7,47 @@ class LoginForm extends React.Component {
     password: ""
   }
 
-  handleUsername = e => {
+  handleChange = e => {
+    let { name, value } = e.target
     this.setState({
-      username: e.target.value
+      [name]: value
     })
   }
 
-  handlePassword = e => {
-    this.setState({
-      password: e.target.value
-    })
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-    let userData = {username: this.state.username, password: this.state.password}
-    this.props.handleSubmit(userData)
-    this.props.history.push("/home")
-  }
+  // handleSubmit = e => {
+  //   e.preventDefault()
+  //   let userData = {username: this.state.username, password: this.state.password}
+  //   this.props.handleSubmit(userData)
+  //   this.props.history.push("/home")
+  // }
 
   render() {
     console.log(this.props)
     return (
-      <form onSubmit={e => this.handleSubmit(e)}>
-        <h1>{this.props.title}</h1>
-        <div>
-          <input type="text" name="username" placeholder="Username" onChange={e => this.handleUsername(e)} value={this.state.username}/>
-          <label htmlFor="username">Username</label>
-        </div>
-        <div>
-          <input type="password" name="password" placeholder="Password" onChange={e => this.handlePassword(e)} value={this.state.password}/>
-          <label htmlFor="password">Password</label>
-        </div>
-        <input type="submit" value={this.props.title}/>
-      </form>
+      <div className="login">
+        <form onSubmit={e => this.props.handleLoginOrSignup(e, this.state)}>
+          <h1>{this.props.title}</h1>
+          <div className="username">
+            <label htmlFor="username">Username</label>
+            <input 
+              type="text" 
+              name="username" 
+              placeholder="Username" 
+              onChange={this.handleChange} 
+              value={this.state.username}/>
+          </div>
+          <div className="password">
+            <label htmlFor="password">Password</label>
+            <input 
+              type="password" 
+              name="password" 
+              placeholder="Password" 
+              onChange={this.handleChange} 
+              value={this.state.password}/>
+          </div>
+          <input type="submit" value={this.props.title}/>
+        </form>
+      </div>
     );
   }
 }

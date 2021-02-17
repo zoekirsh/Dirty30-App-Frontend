@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = ( { user, handleLogout } ) => {
 
   const link = {
     width: '100px',
@@ -13,36 +13,47 @@ const NavBar = () => {
   }
 
   return (
-    <div className="navbar">
-      <NavLink 
-        to="/home"
-        exact
-        style={link}
-        activeStyle={{
-          textShadow: 'white'
-      }}>home</NavLink>
-      <NavLink 
-        to="/browse"
-        exact
-        style={link}
-        activeStyle={{
-          textShadow: 'white'
-        }}>browse</NavLink>
-      <NavLink 
-        to="/workouts/new"
-        exact
-        style={link}
-        activeStyle={{
-          textShadow: 'white'
-          }}>plan workout</NavLink>
-      <NavLink 
-        to="/workout"
-        exact
-        style={link}
-        activeStyle={{
-          textShadow: 'white'
-        }}>sweat</NavLink>
-    </div>
+    <header className="navbar">
+      <h3>Dirty30</h3>
+        {!user.id ? (
+          <>
+              <NavLink to="/">Login</NavLink>
+              <NavLink to="/signup">Signup</NavLink>
+          </>
+        ) : (
+          <>
+            <NavLink 
+              to="/home"
+              exact
+              style={link}
+              activeStyle={{
+                textShadow: 'white'
+            }}>home</NavLink>
+            <NavLink 
+              to="/browse"
+              exact
+              style={link}
+              activeStyle={{
+                textShadow: 'white'
+            }}>browse</NavLink>
+            <NavLink 
+              to="/workouts/new"
+              exact
+              style={link}
+              activeStyle={{
+                textShadow: 'white'
+                }}>plan workout</NavLink>
+            <NavLink 
+              to="/workout"
+              exact
+              style={link}
+              activeStyle={{
+                textShadow: 'white'
+            }}>sweat</NavLink>
+            <button onClick={handleLogout}>Logout</button>
+          </>
+        )}
+    </header>
   )
 }
 
