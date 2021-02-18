@@ -26,6 +26,7 @@ class App extends React.Component {
     }
   }
 
+  //JWT Auth stuff
   persistUser = (token) => {
     fetch(URL + '/persist', {
       method: 'GET',
@@ -74,6 +75,7 @@ class App extends React.Component {
     }
   }
 
+  //Login & Signup & Logout
   handleLogin = (e, userInfo) => {
     e.preventDefault()
 
@@ -109,8 +111,10 @@ class App extends React.Component {
     this.setState({ user: {} })
   }
 
+  //prop Fns for Workouts 
   createNewWorkout = (workout) => {
     console.log(workout)
+
     fetch(URL + "/workouts", {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -124,15 +128,39 @@ class App extends React.Component {
       })
     })
     .then(res => res.json())
-    //set state and reroute to Workout page aka '/sweat'
+      //set state and reroute to Workout page aka '/sweat'
     .then(data => {
-      this.setState({
-        selectedWorkout: data
-      }),
+      console.log(this.state.user)
+     
+      this.setState((prevState) => {
+        let newWorkouts = [...prevState.user.workouts, data]
+        return {
+          selectedWorkout: data,
+          user: {...prevState.user, workouts: newWorkouts}
+        }
+      })
+
       this.props.history.push("/workout")
       }
     )
   }
+
+  removeWorkoutFromUser = (workout) => {
+    let updatedWorkouts = this.state.user.workouts.filter(w => w.id !== workout.id)
+    this.setState((prevState) => {
+      return {
+        user: {...prevState.user, workouts: updatedWorkouts}
+      }
+    })
+  }
+
+  setCurrentWorkout = (workout) => {
+    this.setState({
+      selectedWorkout: workout
+    })
+    this.props.history.push("/workout")
+  }
+
 
   render() {
     const { user, error } = this.state
@@ -146,9 +174,9 @@ class App extends React.Component {
 
           {!user.id && <Redirect to="/" />}
           <Route exact path="/home" render={(rProps) => <Home {...rProps} user={this.state.user}/>} />
-          <Route exact path="/browse" render={() => <Workouts currentUser={this.state.user} />} />
+          <Route exact path="/browse" render={() => <Workouts currentUser={this.state.user} setCurrentWorkout={this.setCurrentWorkout} updateUserInApp={this.removeWorkoutFromUser}/>} />
           <Route exact path="/workouts/new" render={() => <CreateWorkout handleSubmit={this.createNewWorkout}/>}/>
-          <Route exact path="/workout" component={Workout}/>
+          <Route exact path="/workout" component={() => <Workout workout={this.state.selectedWorkout} user={this.state.user}/>}/>
         </Switch>
         
       </div>

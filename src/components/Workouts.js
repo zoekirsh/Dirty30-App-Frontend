@@ -9,6 +9,11 @@ class Workouts extends React.Component {
       userFilteredWorkouts: []
    }
 
+   componentDidMount() {
+    this.setAllWorkouts()
+    this.setUserWorkouts()      
+ }
+
    setAllWorkouts = () => {
       fetch('http://localhost:3000/workouts')
       .then(resp => resp.json())
@@ -20,17 +25,40 @@ class Workouts extends React.Component {
       })     
    }
 
-   componentDidMount() {
-      this.setAllWorkouts()
-
+   setUserWorkouts = () => {
       if (Object.keys(this.props.currentUser).length > 0) {
-         this.setState({
-            userWorkouts: this.props.currentUser.workouts,
-            userFilteredWorkouts: this.props.currentUser.workouts
-         })
+        this.setState({
+          userWorkouts: this.props.currentUser.workouts,
+          userFilteredWorkouts: this.props.currentUser.workouts
+        })
       }
+    }
+
+    //delete 
+   removeFromUserWorkouts = (workout) => {
+      let newUserWorkouts = this.state.userWorkouts.filter(w => w.id !== workout.id)
+      let newUserFiltered = this.state.userFilteredWorkouts.filter(w => w.id !== workout.id)
+      this.props.updateUserInApp(workout)
+
+      this.setState({
+        userWorkouts: newUserWorkouts,
+        userFilteredWorkouts: newUserFiltered
+      })
    }
 
+
+   deleteWorkout = (workout) => {
+     fetch(`http://localhost:3000/workouts/${workout.id}`, {
+       method: 'DELETE'
+     })
+     .then(res => res.json())
+     .then(data => {
+       this.setAllWorkouts()
+       this.removeFromUserWorkouts(data)
+     })
+   }
+
+    //filter 
    handleFilter = (e) => {
       const currentWorkouts = this.state.allWorkouts
       const currentUserWorkouts = this.state.userWorkouts
@@ -73,10 +101,10 @@ class Workouts extends React.Component {
       }
    }
 
-   renderWorkouts = (workoutArr) => {
+   renderWorkouts = (workoutArr, trueOrFalse) => {
      console.log(workoutArr)
      if (workoutArr.length > 0) {
-       return <WorkoutGrid workouts={workoutArr} />
+       return <WorkoutGrid workouts={workoutArr} setCurrentWorkout={this.props.setCurrentWorkout} isUserWorkout={trueOrFalse} deleteWorkout={this.deleteWorkout}/>
      }
    }
 
@@ -90,9 +118,9 @@ class Workouts extends React.Component {
               <option value="lower-body">Lower Body</option>
               <option value="full-body">Full Body</option>
             </select>
-            {this.renderWorkouts(this.state.userFilteredWorkouts)}
+            {this.renderWorkouts(this.state.userFilteredWorkouts, true)}
             <hr/>
-            {this.renderWorkouts(this.state.filteredWorkouts)}
+            {this.renderWorkouts(this.state.filteredWorkouts, false)}
          </div>
       )
    }
