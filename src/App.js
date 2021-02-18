@@ -22,7 +22,27 @@ class App extends React.Component {
       name: "Burn baby",
       muscleGroup: "upper body",
       sets: 3,
-      exercisesPerSet: 7
+      exercisesPerSet: 7,
+      exercises: [
+      {
+      id: 1,
+      name: "Lunge",
+      muscleGroup: "lower body",
+      demo: "../media/lunge.mpg"
+      },
+      {
+      id: 2,
+      name: "Front loaded squat",
+      muscleGroup: "lower body",
+      demo: "../media/front-loaded-squat.mpg"
+      },
+      {
+      id: 3,
+      name: "Front squat",
+      muscleGroup: "lower body",
+      demo: "../media/front-squat.mpg"
+      }
+      ]
     }
   }
 
@@ -55,7 +75,7 @@ class App extends React.Component {
   }
 
   handleAuthResponse = (data) => {
-    console.log(data)
+    // console.log(data)
     let user = JSON.parse(data.user)
     if (user.username) {
       const { username, id, firstname, height, weight, workouts, token } = user
@@ -130,7 +150,7 @@ class App extends React.Component {
           <Route exact path="/home" render={(rProps) => <Home {...rProps} user={this.state.user}/>} />
           <Route exact path="/browse" render={() => <Workouts currentUser={this.state.user} />} />
           <Route exact path="/workouts/new" component={CreateWorkout}/>
-          <Route exact path="/workout" component={Workout}/>
+          <Route exact path="/workout" render={() => <Workout currentWorkout={this.state.selectedWorkout}/>}/>
         </Switch>
         
       </div>
