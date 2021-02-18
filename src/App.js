@@ -16,7 +16,6 @@ class App extends React.Component {
   state = {
     user: {},
     error: false,
-    workouts: [],
     selectedWorkout: {}
   }
 
@@ -110,6 +109,31 @@ class App extends React.Component {
     this.setState({ user: {} })
   }
 
+  createNewWorkout = (workout) => {
+    console.log(workout)
+    fetch(URL + "/workouts", {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        name: workout.name,
+        muscleGroup: workout.muscleGroup,
+        sets: workout.sets,
+        exercisesPerSet: workout.exercisesPerSet,
+        exercises: [...workout.selectedExercises],
+        user_id: this.state.user.id
+      })
+    })
+    .then(res => res.json())
+    //set state and reroute to Workout page aka '/sweat'
+    .then(data => {
+      this.setState({
+        selectedWorkout: data
+      }),
+      this.props.history.push("/workout")
+      }
+    )
+  }
+
   render() {
     const { user, error } = this.state
     return (
@@ -123,7 +147,7 @@ class App extends React.Component {
           {!user.id && <Redirect to="/" />}
           <Route exact path="/home" render={(rProps) => <Home {...rProps} user={this.state.user}/>} />
           <Route exact path="/browse" render={() => <Workouts currentUser={this.state.user} />} />
-          <Route exact path="/workouts/new" component={CreateWorkout}/>
+          <Route exact path="/workouts/new" render={() => <CreateWorkout handleSubmit={this.createNewWorkout}/>}/>
           <Route exact path="/workout" component={Workout}/>
         </Switch>
         

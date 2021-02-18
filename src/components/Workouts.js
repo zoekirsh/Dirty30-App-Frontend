@@ -74,7 +74,10 @@ class Workouts extends React.Component {
    }
 
    renderWorkouts = (workoutArr) => {
-      return <WorkoutGrid workouts={workoutArr} />
+     console.log(workoutArr)
+     if (workoutArr.length > 0) {
+       return <WorkoutGrid workouts={workoutArr} />
+     }
    }
 
 

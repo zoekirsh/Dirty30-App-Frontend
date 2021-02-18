@@ -14,13 +14,6 @@ class LoginForm extends React.Component {
     })
   }
 
-  // handleSubmit = e => {
-  //   e.preventDefault()
-  //   let userData = {username: this.state.username, password: this.state.password}
-  //   this.props.handleSubmit(userData)
-  //   this.props.history.push("/home")
-  // }
-
   render() {
     console.log(this.props)
     return (
