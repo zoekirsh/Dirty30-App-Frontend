@@ -1,5 +1,4 @@
 import React from 'react'
-import ArmRaise from '../media/arm-raises.mp4'
 
 class Workout extends React.Component {
   state = {
@@ -16,7 +15,8 @@ class Workout extends React.Component {
     },
     exercises: [],
     currentTimer: 0,
-    currentExercise: {demo: ""}
+    currentExercise: {demo: ""},
+    btnHidden: ""
   }
 
   restSweat = (exc, time, callback = () => {}) => {
@@ -66,13 +66,13 @@ class Workout extends React.Component {
 
       break
       case 6:
-        this.restSweat(time, 
-          () => this.restSweat(time, 
-            () => this.restSweat(time,
-              () => this.restSweat(time, 
-                () => this.restSweat(time, 
+        this.restSweat(arr[0], time, 
+          () => this.restSweat(arr[1], time, 
+            () => this.restSweat(arr[2], time,
+              () => this.restSweat(arr[3], time, 
+                () => this.restSweat(arr[4], time, 
                   () => {
-                    this.restSweat(time)
+                    this.restSweat(arr[5], time)
                     callback()
                   }
                 )
@@ -80,15 +80,16 @@ class Workout extends React.Component {
             )
           )
         )
+      
 
       break
       case 5:
-        this.restSweat(time, 
-          () => this.restSweat(time, 
-            () => this.restSweat(time,
-              () => this.restSweat(time,
+        this.restSweat(arr[0], time, 
+          () => this.restSweat(arr[1], time, 
+            () => this.restSweat(arr[2], time,
+              () => this.restSweat(arr[3], time, 
                 () => {
-                  this.restSweat(time)
+                  this.restSweat(arr[4], time) 
                   callback()
                 }
               )
@@ -101,8 +102,12 @@ class Workout extends React.Component {
   }
 
   startWorkout = () => {
+    this.setState({
+      btnHidden: "none"
+    })
+
     let restTime = this.state.times.restTime
-    let exercises = this.state.exercises
+    let exercises = this.state.exercises 
 
     let rest = {
       name: "Rest",
@@ -115,7 +120,7 @@ class Workout extends React.Component {
           () => this.restSweat(rest, restTime,
             () => this.startSet(exercises,
               () => this.restSweat(rest, restTime,
-                () => this.startSet()   
+                () => this.startSet(exercises)   
               )
             )  
           ) 
@@ -124,15 +129,15 @@ class Workout extends React.Component {
 
         break
       case 2:
-        this.startSet(
-          () => this.restSweat(restTime,
-            () => this.startSet()
+        this.startSet(exercises,
+          () => this.restSweat(rest, restTime,
+            () => this.startSet(exercises)
           ) 
         )
 
         break
       case 1:
-        this.startSet() 
+        this.startSet(exercises) 
 
         break
     }
@@ -183,21 +188,14 @@ class Workout extends React.Component {
   }
 
   renderVids = () => {
-
-
-    // console.log(vid)
-    // console.log(!!this.state.currentExercise)
-  
-    
     if (Object.keys(this.state.currentExercise).length > 1) {
       let vidRoute = this.state.currentExercise.demo
-      // let vid = 
 
       return(
         <video width="500px" autoPlay="autoplay" loop="loop" src={require(`../media/${vidRoute}`).default} type="video/mp4"></video>
       )
     } else {
-      return ("")
+      return (<h3>Please choose a workout</h3>)
     }
 
 
@@ -207,13 +205,16 @@ class Workout extends React.Component {
     console.log(this.state.currentExercise.demo)
     return(
       <div>
-        <h1>{this.props.currentWorkout.name}</h1>
-        <p>{this.state.currentTimer}</p>
-        <h3>{this.state.currentExercise.name}</h3>
+        <h3>{this.props.currentWorkout.name}</h3>
+        <div className="circle">
+          <h1>{this.state.currentTimer}</h1>
+        </div>
+        
+        <h1>{this.state.currentExercise.name}</h1>
 
         {this.renderVids()}
 
-        <button onClick={this.startWorkout}>Start</button>
+        <button className="glowButton" onClick={this.startWorkout} style={{display: this.state.btnHidden}}>Start</button>
       </div>
     )
   }

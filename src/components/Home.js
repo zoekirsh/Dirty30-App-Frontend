@@ -8,7 +8,9 @@ const Home = (props) => {
         <h4>Welcome, {props.user.username}</h4>
         {/* <h4>Workouts completed: </h4> */}
       </div>
-      <button onClick={() => props.history.push('/browse')}>Choose Workout</button>
+      <div id="choooseWorkout" className="glowButton" onClick={() => props.history.push('/browse')}>
+        <h4 className="white">Choose Workout</h4>
+      </div>
     </div>
   )
 }
