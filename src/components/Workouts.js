@@ -118,8 +118,10 @@ class Workouts extends React.Component {
               <option value="lower-body">Lower Body</option>
               <option value="full-body">Full Body</option>
             </select>
+            <h3>Your Workouts</h3>
             {this.renderWorkouts(this.state.userFilteredWorkouts, true)}
             <hr/>
+            <h3>All Workouts</h3>
             {this.renderWorkouts(this.state.filteredWorkouts, false)}
          </div>
       )
