@@ -1,8 +1,10 @@
 # DIRTY30 Workout App 
 
-Tough workouts. Only 30 minutes. 
+Tough workouts:heavy_exclamation_mark: Only 30 minutes:heavy_exclamation_mark:
 
-With this app, you can build your own workout from a database of provided exercises, or choose from one of the complete workouts that come with the app. All workouts are only 30 minutes!
+With this app, you can build your own workout from a database of provided exercises, or choose from one of the complete workouts that come with the app. 
+
+:clock930: All workouts are only 30 minutes! :clock930:
 
 Once a workout is created or selected, the user is guided through the workout with demonstrational videos and a timer to count down each exercise and rest break. 
 
@@ -11,7 +13,7 @@ Once a workout is created or selected, the user is guided through the workout wi
 Before you begin, ensure you have met the following requirements:
 - You have installed version <Ruby/2.6.1> or higher
 - You have installed <Rails 6.0.3.4> or higher
-- A working installation nof the POSTgres
+- A working installation nof the `POSTgres`
 - You have installed (https://www.npmjs.com/)
 - You have a Windows/Mac machine.
 
@@ -32,9 +34,9 @@ To use the app, follow these steps: After forking, navigte into the appropriate 
 # Contributors
 
 This project was created by:
- @RileyMIverson
+ Riley Iverson
  &
- @ZoeKirsh 
+ Zoe Kirsh 
 
  # License
 
