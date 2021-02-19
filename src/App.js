@@ -175,8 +175,7 @@ class App extends React.Component {
           {!user.id && <Redirect to="/" />}
           <Route exact path="/home" render={(rProps) => <Home {...rProps} user={this.state.user}/>} />
           <Route exact path="/browse" render={() => <Workouts currentUser={this.state.user} setCurrentWorkout={this.setCurrentWorkout} updateUserInApp={this.removeWorkoutFromUser}/>} />
-          <Route exact path="/workouts/new" render={() => <CreateWorkout handleSubmit={this.createNewWorkout}/>}/>
-          <Route exact path="/workout" component={() => <Workout workout={this.state.selectedWorkout} user={this.state.user}/>}/>
+          <Route exact path="/workout" render={() => <Workout currentWorkout={this.state.selectedWorkout}/>}/>/>
         </Switch>
         
       </div>
