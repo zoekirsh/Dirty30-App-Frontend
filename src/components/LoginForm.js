@@ -19,9 +19,10 @@ class LoginForm extends React.Component {
     return (
       <div className="login">
         <form onSubmit={e => this.props.handleLoginOrSignup(e, this.state)}>
-          <h1>{this.props.title}</h1>
+          <h2>TOUGH WORKOUTS. ONLY 30 MINUTES.</h2>
           <div className="username">
-            <label htmlFor="username">Username</label>
+            <label className="formLabel" htmlFor="username">Username</label>
+            <br/>
             <input 
               type="text" 
               name="username" 
@@ -30,7 +31,8 @@ class LoginForm extends React.Component {
               value={this.state.username}/>
           </div>
           <div className="password">
-            <label htmlFor="password">Password</label>
+            <label className="formLabel" htmlFor="password">Password</label>
+            <br/>
             <input 
               type="password" 
               name="password" 
@@ -38,7 +40,7 @@ class LoginForm extends React.Component {
               onChange={this.handleChange} 
               value={this.state.password}/>
           </div>
-          <input type="submit" value={this.props.title}/>
+          <input id="loginBtn" className="glowButton" type="submit" value={this.props.title}/>
         </form>
       </div>
     );

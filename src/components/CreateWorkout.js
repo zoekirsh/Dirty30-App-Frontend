@@ -22,17 +22,18 @@ class CreateWorkout extends React.Component {
     }))
   }
 
-  addExToWorkout = (exercise) => {
+  addExToWorkout = (e, exercise) => {
     console.log(exercise)
     //add to state
     let exArr = this.state.selectedExercises
     let exPerSet = parseInt(this.state.exercisesPerSet)
     if (exArr.length < exPerSet) {
+      e.target.classList.add("bgRed")
+
       this.setState({
         selectedExercises: [...exArr, exercise]
       })
     }
-   
   }
 
   handleChange = (e) => {
@@ -126,12 +127,12 @@ class CreateWorkout extends React.Component {
           <br></br>
           <br></br>
           <br></br>
-          <label>
+          <label className="red">
             Please select desired exercises:
             <hr></hr>
             {<ExerciseGrid exercises={this.state.filteredExercises} addExToWorkout={this.addExToWorkout}/>}
           </label>
-          <input type="submit" value="LET'S GO"/>
+          <input id="formBtn" className="glowButton" type="submit" value="LET'S GO"/>
         </form>
       </div>
     )
