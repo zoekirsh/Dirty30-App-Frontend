@@ -24,24 +24,48 @@ class App extends React.Component {
       sets: 3,
       exercisesPerSet: 7,
       exercises: [
-      {
-      id: 1,
-      name: "Lunge",
-      muscleGroup: "lower body",
-      demo: "../media/lunge.mpg"
-      },
-      {
-      id: 2,
-      name: "Front loaded squat",
-      muscleGroup: "lower body",
-      demo: "../media/front-loaded-squat.mpg"
-      },
-      {
-      id: 3,
-      name: "Front squat",
-      muscleGroup: "lower body",
-      demo: "../media/front-squat.mpg"
-      }
+        {
+          id: 1,
+          name: "Lunge",
+          muscleGroup: "lower body",
+          demo: "lunge.mp4"
+        },
+        {
+          id: 2,
+          name: "Front loaded squat",
+          muscleGroup: "lower body",
+          demo: "front-loaded-squat.mp4"
+        },
+        {
+          id: 3,
+          name: "Front squat",
+          muscleGroup: "lower body",
+          demo: "front-squat.mp4"
+        },
+        {
+          id: 3,
+          name: "Front squat",
+          muscleGroup: "lower body",
+          demo: "front-squat.mp4"
+        },
+        {
+          id: 3,
+          name: "Front squat",
+          muscleGroup: "lower body",
+          demo: "front-squat.mp4"
+        },
+        {
+          id: 3,
+          name: "Front squat",
+          muscleGroup: "lower body",
+          demo: "front-squat.mp4"
+        },
+        {
+          id: 3,
+          name: "Front squat",
+          muscleGroup: "lower body",
+          demo: "front-squat.mp4"
+        }
       ]
     }
   }
