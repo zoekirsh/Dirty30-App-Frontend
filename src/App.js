@@ -49,7 +49,7 @@ class App extends React.Component {
   }
 
   handleAuthResponse = (data) => {
-    console.log(data)
+    // console.log(data)
     let user = JSON.parse(data.user)
     if (user.username) {
       const { username, id, firstname, height, weight, workouts, token } = user
