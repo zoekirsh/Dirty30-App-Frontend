@@ -8,8 +8,8 @@ const Home = (props) => {
         <h3>Welcome, {props.user.username}</h3>
         {/* <h4>Workouts completed: </h4> */}
       </div>
-      <div id="choooseWorkout" class="glowButton" onClick={() => props.history.push('/browse')}>
-        <h4 class="white">Choose Workout</h4>
+      <div id="choooseWorkout" className="glowButton" onClick={() => props.history.push('/browse')}>
+        <h4 className="white">Choose Workout</h4>
       </div>
     </div>
   )

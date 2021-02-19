@@ -122,7 +122,7 @@ class CreateWorkout extends React.Component {
           <br></br>
           <label>
             Name your workout:
-            <input type="text" name="name" onChange={this.handleChange} sVal={this.state.name}></input>
+            <input type="text" name="name" onChange={this.handleChange} value={this.state.name}></input>
           </label>
           <br></br>
           <br></br>
