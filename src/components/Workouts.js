@@ -47,7 +47,8 @@ class Workouts extends React.Component {
    }
 
 
-   deleteWorkout = (workout) => {
+   deleteWorkout = (e, workout) => {
+      e.stopPropagation()
      fetch(`http://localhost:3000/workouts/${workout.id}`, {
        method: 'DELETE'
      })
