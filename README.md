@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# DIRTY30 Workout App 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Tough workouts. Only 30 minutes. 
 
-## Available Scripts
+With this app, you can build your own workout from a database of provided exercises, or choose from one of the complete workouts that come with the app. All workouts are only 30 minutes!
 
-In the project directory, you can run:
+Once a workout is created or selected, the user is guided through the workout with demonstrational videos and a timer to count down each exercise and rest break. 
 
-### `yarn start`
+# Pre-Requisites: 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Before you begin, ensure you have met the following requirements:
+- You have installed version <Ruby/2.6.1> or higher
+- You have installed <Rails 6.0.3.4> or higher
+- A working installation nof the POSTgres
+- You have installed (https://www.npmjs.com/)
+- You have a Windows/Mac machine.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Installing DIRTY30
 
-### `yarn test`
+To install the app, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Navigate to (https://github.com/Rmiverson/Dirty30-App-Backend) to clone the backend of the project. Follow the steps provided there.
+2. Navigate into the parent directory that holds the backend, and use the command: `git clone <project-SSH>`
 
-### `yarn build`
+# Using DIRTY30
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To use the app, follow these steps: After forking, navigte into the appropriate directory and type the following commands into your terminal:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. npm install
+2. npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Contributors
 
-### `yarn eject`
+This project was created by:
+ @RileyMIverson
+ &
+ @ZoeKirsh 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+ # License
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ This project uses the following license: Learn.co Educational Content License.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
