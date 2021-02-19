@@ -1,12 +1,12 @@
 # DIRTY30 Workout App 
 
-Tough workouts:heavy_exclamation_mark: Only 30 minutes:heavy_exclamation_mark:
+:bangbang: TOUGH WORKOUTS. ONLY THIRTY MINUTES. :bangbang:
 
-With this app, you can build your own workout from a database of provided exercises, or choose from one of the complete workouts that come with the app. 
+:x: With this app, you can build your own workout from a database of provided exercises, or choose from one of the complete workouts that come with the app. 
 
 :clock930: All workouts are only 30 minutes! :clock930:
 
-Once a workout is created or selected, the user is guided through the workout with demonstrational videos and a timer to count down each exercise and rest break. 
+:x: Once a workout is created or selected, the user is guided through the workout with demonstrational videos and a timer to count down each exercise and rest break. 
 
 # Pre-Requisites: 
 
