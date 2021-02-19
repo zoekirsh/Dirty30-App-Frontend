@@ -1,5 +1,4 @@
 import React from 'react'
-import ArmRaise from '../media/arm-raises.mp4'
 
 class Workout extends React.Component {
   state = {
@@ -67,13 +66,13 @@ class Workout extends React.Component {
 
       break
       case 6:
-        this.restSweat(time, 
-          () => this.restSweat(time, 
-            () => this.restSweat(time,
-              () => this.restSweat(time, 
-                () => this.restSweat(time, 
+        this.restSweat(arr[0], time, 
+          () => this.restSweat(arr[1], time, 
+            () => this.restSweat(arr[2], time,
+              () => this.restSweat(arr[3], time, 
+                () => this.restSweat(arr[4], time, 
                   () => {
-                    this.restSweat(time)
+                    this.restSweat(arr[5], time)
                     callback()
                   }
                 )
@@ -81,15 +80,16 @@ class Workout extends React.Component {
             )
           )
         )
+      
 
       break
       case 5:
-        this.restSweat(time, 
-          () => this.restSweat(time, 
-            () => this.restSweat(time,
-              () => this.restSweat(time,
+        this.restSweat(arr[0], time, 
+          () => this.restSweat(arr[1], time, 
+            () => this.restSweat(arr[2], time,
+              () => this.restSweat(arr[3], time, 
                 () => {
-                  this.restSweat(time)
+                  this.restSweat(arr[4], time) 
                   callback()
                 }
               )
@@ -120,7 +120,7 @@ class Workout extends React.Component {
           () => this.restSweat(rest, restTime,
             () => this.startSet(exercises,
               () => this.restSweat(rest, restTime,
-                () => this.startSet()   
+                () => this.startSet(exercises)   
               )
             )  
           ) 
@@ -129,15 +129,15 @@ class Workout extends React.Component {
 
         break
       case 2:
-        this.startSet(
-          () => this.restSweat(restTime,
-            () => this.startSet()
+        this.startSet(exercises,
+          () => this.restSweat(rest, restTime,
+            () => this.startSet(exercises)
           ) 
         )
 
         break
       case 1:
-        this.startSet() 
+        this.startSet(exercises) 
 
         break
     }
