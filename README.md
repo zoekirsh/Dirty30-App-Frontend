@@ -13,7 +13,7 @@ TOUGH WORKOUTS. ONLY THIRTY MINUTES.
 Before you begin, ensure you have met the following requirements:
 - You have installed version <Ruby/2.6.1> or higher
 - You have installed <Rails 6.0.3.4> or higher
-- A working installation nof the `POSTgres`
+- A working installation nof the `PostgreSQL`
 - You have installed (https://www.npmjs.com/)
 - You have a Windows/Mac machine.
 
@@ -34,9 +34,9 @@ To use the app, follow these steps: After forking, navigte into the appropriate 
 # Contributors
 
 This project was created by:
- Riley Iverson
+ [Riley Iverson]https://github.com/Rmiverson
  &
- Zoe Kirsh 
+ [Zoe Kirsh]https://github.com/zoekirsh
 
  # License
 
