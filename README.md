@@ -1,4 +1,4 @@
-# DIRTY30 Workout App :sweat_drops:
+# :bangbang: DIRTY30 Workout App :sweat_drops:
 
 TOUGH WORKOUTS. ONLY THIRTY MINUTES.
 
